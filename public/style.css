@@ -1,0 +1,141 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #ece5dd;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#chat-container {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+h2 {
+  background: #075e54;
+  color: white;
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+}
+
+#user-list {
+  padding: 10px;
+  background: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+#user-list h3 {
+  margin: 0 0 5px 0;
+}
+
+#users {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background: #e5ddd5;
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  max-width: 80%;
+  min-width: 40%;
+  word-wrap: break-word;
+  display: inline-block;
+  line-height: 1.4;
+  position: relative;
+}
+
+.sender {
+  align-self: flex-end;
+  background: #dcf8c6;
+  border-bottom-right-radius: 0;
+}
+
+.receiver {
+  align-self: flex-start;
+  background: #ffffff;
+  border-bottom-left-radius: 0;
+}
+
+.msg strong {
+  display: block;
+  color: #075e54;
+  margin-bottom: 4px;
+  font-size: 0.85em;
+}
+
+.timestamp {
+  font-size: 0.7em;
+  color: gray;
+  position: absolute;
+  bottom: 2px;
+  right: 8px;
+}
+
+.profile-icon {
+  width: 20px;
+  height: 20px;
+  background: #ccc;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  float: left;
+}
+
+form {
+  display: flex;
+  padding: 10px;
+  background: #f0f0f0;
+  border-top: 1px solid #ddd;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: white;
+  margin-right: 10px;
+}
+
+#name {
+  max-width: 120px;
+}
+
+button {
+  background: #075e54;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#typing {
+  font-size: 0.8em;
+  color: yellow;
+  margin: 4px 10px;
+}

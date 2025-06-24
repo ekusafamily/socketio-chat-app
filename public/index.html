@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Wi-Fi Chat 💬</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="chat-container">
+    <h2> WHATSAPP Mwitu </h2>
+    <div id="user-list">
+      <h3>🟢 Online</h3>
+      <ul id="users"></ul>
+    </div>
+    <div id="messages"></div>
+    <div id="typing"></div>
+    <form id="chat-form">
+      <input id="name" placeholder="Your name" required>
+      <input id="message" placeholder="Type a message..." required autocomplete="off">
+      <button>Send</button>
+    </form>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
