@@ -9,10 +9,15 @@ const userList = document.getElementById('users');
 
 let myName = "";
 
-socket.on('chat history', history => {
-  messages.innerHTML = '';
-  history.forEach(addMessage);
+// 👇 New: If server remembers your IP and emits name
+socket.on('new user', (name) => {
+  nameBox.value = name;
+  nameBox.disabled = true;
+  myName = name;
 });
+
+socket.on('chat history', history => {                                                      messages.innerHTML = '';
+  history.forEach(addMessage);                                                            });
 
 socket.on('chat message', data => {
   addMessage(data);
@@ -30,10 +35,12 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   const name = nameBox.value.trim();
   const message = msgBox.value.trim();
+
   if (!myName) {
     myName = name;
-    socket.emit('new user', name);
+    socket.emit('new user', name); // Only emit once
   }
+
   if (name && message) {
     const timestamp = new Date().toLocaleTimeString();
     socket.emit('chat message', { name, message, time: timestamp });
@@ -60,3 +67,5 @@ function addMessage({ name, message, time }) {
   messages.appendChild(div);
   messages.scrollTop = messages.scrollHeight;
 }
+
+
