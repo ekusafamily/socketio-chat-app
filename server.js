@@ -1,3 +1,4 @@
+
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -21,16 +22,25 @@ if (fs.existsSync(chatFile)) {
   }
 }
 
-const users = new Map();
+const users = new Map();         // socket.id => name
+const ipToName = new Map();      // ip => name (new from Mark 3)
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', socket => {
+  const ip = socket.handshake.address;
+
   // Send chat history
   socket.emit('chat history', messages.slice(-50));
 
+  // If IP already has a name, auto-set it
+  if (ipToName.has(ip)) {
+    socket.emit('new user', ipToName.get(ip));
+  }
+
   socket.on('new user', name => {
     users.set(socket.id, name);
+    ipToName.set(ip, name); // store IP -> name
     io.emit('user list', Array.from(users.values()));
   });
 
@@ -39,15 +49,19 @@ io.on('connection', socket => {
   });
 
   socket.on('chat message', data => {
-    messages.push(data);
-    if (messages.length > 500) messages.shift(); // limit file size
+    const message = {
+      ...data,
+      ip,
+    };
 
-    // Save to chat.json
+    messages.push(message);
+    if (messages.length > 500) messages.shift();
+
     fs.writeFile(chatFile, JSON.stringify(messages, null, 2), err => {
       if (err) console.error('Error saving chat:', err);
     });
 
-    io.emit('chat message', data);
+    io.emit('chat message', message);
   });
 
   socket.on('disconnect', () => {
@@ -60,3 +74,5 @@ const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`✅ Chat running at http://<your-ip>:${PORT}`);
 });
+
+
