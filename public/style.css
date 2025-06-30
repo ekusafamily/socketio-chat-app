@@ -29,6 +29,8 @@ h2 {
   padding: 10px;
   background: #f4f4f4;
   border-bottom: 1px solid #ddd;
+  align-items: center;
+  justify-content: center;
 }
 
 #user-list h3 {
@@ -45,7 +47,7 @@ h2 {
   flex: 1;
   overflow-y: auto;
   padding: 10px;
-  background: #e5ddd5;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrGQafjTnuofcbb3CDHz77VUKJNFxeZqjkZagfjfALunwuyq25-g0EJO8K&s=10') no-repeat center center;
   display: flex;
   flex-direction: column;
 }
@@ -121,17 +123,22 @@ input {
 }
 
 #name {
-  max-width: 120px;
+  max-width: 80px;
 }
-
+#message
+{
+  max-width:170px;
+}
 button {
-  background: #075e54;
+  background: #f4f4f5;
   color: white;
   border: none;
   padding: 10px 16px;
-  border-radius: 50%;
+  border-radius: 10%;
   font-size: 16px;
   cursor: pointer;
+  float: left;
+  
 }
 
 #typing {
