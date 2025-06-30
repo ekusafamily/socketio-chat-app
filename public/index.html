@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Local Wi-Fi Chat 💬</title>
+  <title>Message Freely</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="chat-container">
-    <h2> WHATSAPP Mwitu </h2>
+<div id="chat-container">
+    <h2>RELAY MESSAGER </h2>
     <div id="user-list">
-      <h3>🟢 Online</h3>
+      <h3>.           🟢 Online Users🟢</h3>
       <ul id="users"></ul>
     </div>
     <div id="messages"></div>
     <div id="typing"></div>
     <form id="chat-form">
-      <input id="name" placeholder="Your name" required>
+      <input id="name" placeholder="Username" required>
       <input id="message" placeholder="Type a message..." required autocomplete="off">
-      <button>Send</button>
+      <button>
+  <img src="data:image/png;base64,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" alt="Send" width="30" style="transform: rotate(42deg);>
+      </button>
     </form>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="client.js"></script>
-</body>
+      </body>
 </html>
